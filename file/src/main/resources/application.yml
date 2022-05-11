@@ -1,0 +1,25 @@
+server:
+  error:
+    include-binding-errors: always
+    include-message: always
+  port: 8080
+
+spring:
+  application:
+    name: file
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/files
+    username: mysql
+    password: mysql
+  jpa:
+    show-sql: false
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: true

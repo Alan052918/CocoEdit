@@ -1,9 +1,6 @@
 package com.jundaai.user;
 
-import com.jundaai.user.exception.UserEmailConflictException;
-import com.jundaai.user.exception.UserNameConflictException;
-import com.jundaai.user.exception.UserPasswordCollidedException;
-import com.jundaai.user.exception.WrongPasswordException;
+import com.jundaai.user.exception.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -57,13 +54,13 @@ public class UserService {
             throw new UserPasswordCollidedException(requestedPassword);
         }
 
-        ZonedDateTime requestedDateTime = ZonedDateTime.now();
+        ZonedDateTime requestDateTime = ZonedDateTime.now();
         User user = User.builder()
                 .name(requestedName)
                 .email(requestedEmail)
                 .password(requestedPassword)
-                .dateTimeCreated(requestedDateTime)
-                .dateTimeUpdated(requestedDateTime)
+                .dateTimeCreated(requestDateTime)
+                .dateTimeUpdated(requestDateTime)
                 .build();
 
         return userRepository.save(user);
